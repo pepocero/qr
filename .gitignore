@@ -23,3 +23,7 @@ build/
 # Dependencies downloaded locally
 qrcode.min.js
 
+# Keep logo files
+!logo3.PNG
+!logo3.png
+
