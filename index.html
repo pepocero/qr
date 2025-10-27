@@ -195,7 +195,34 @@
         </footer>
     </div>
 
-    <script src="qrcode.min.js"></script>
+    <script>
+        // Load QRCode library - use CDN in production, local file in development
+        (function() {
+            const isLocal = window.location.protocol === 'file:' || window.location.hostname === 'localhost';
+            
+            if (isLocal) {
+                // Use local file for development
+                const script = document.createElement('script');
+                script.src = 'qrcode.min.js';
+                document.head.appendChild(script);
+            } else {
+                // Use CDN for production
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
+                script.onload = function() {
+                    console.log('QRCode loaded from CDN');
+                };
+                script.onerror = function() {
+                    console.error('Failed to load QRCode from CDN');
+                    // Fallback to another CDN
+                    const fallback = document.createElement('script');
+                    fallback.src = 'https://unpkg.com/qrcodejs@1.0.0/qrcode.min.js';
+                    document.head.appendChild(fallback);
+                };
+                document.head.appendChild(script);
+            }
+        })();
+    </script>
     <script src="app.js"></script>
 </body>
 </html>
