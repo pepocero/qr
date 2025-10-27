@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Códigos QR - Completo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Generador de Códigos QR</h1>
+            <p class="subtitle">Crea códigos QR personalizados con múltiples opciones</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Panel de opciones -->
+            <div class="options-panel">
+                <div class="section">
+                    <h2>📝 Tipo de Contenido</h2>
+                    <div class="input-group">
+                        <label>
+                            <input type="radio" name="contentType" value="text" checked>
+                            <span>Texto</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="contentType" value="url">
+                            <span>URL</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="contentType" value="email">
+                            <span>Email</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="contentType" value="sms">
+                            <span>SMS</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="contentType" value="wifi">
+                            <span>WiFi</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="contentType" value="vcard">
+                            <span>Contacto (vCard)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Texto -->
+                <div id="text-input" class="input-section">
+                    <div class="input-group">
+                        <label for="text-content">Contenido</label>
+                        <textarea id="text-content" placeholder="Escribe tu texto aquí..."></textarea>
+                    </div>
+                </div>
+
+                <!-- URL -->
+                <div id="url-input" class="input-section" style="display: none;">
+                    <div class="input-group">
+                        <label for="url-content">URL</label>
+                        <input type="url" id="url-content" placeholder="https://ejemplo.com">
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div id="email-input" class="input-section" style="display: none;">
+                    <div class="input-group">
+                        <label for="email-to">Para</label>
+                        <input type="email" id="email-to" placeholder="destinatario@ejemplo.com">
+                        <label for="email-subject">Asunto</label>
+                        <input type="text" id="email-subject" placeholder="Asunto del email">
+                        <label for="email-body">Mensaje</label>
+                        <textarea id="email-body" placeholder="Mensaje del email"></textarea>
+                    </div>
+                </div>
+
+                <!-- SMS -->
+                <div id="sms-input" class="input-section" style="display: none;">
+                    <div class="input-group">
+                        <label for="sms-number">Número de teléfono</label>
+                        <input type="tel" id="sms-number" placeholder="+1234567890">
+                        <label for="sms-message">Mensaje</label>
+                        <textarea id="sms-message" placeholder="Tu mensaje SMS"></textarea>
+                    </div>
+                </div>
+
+                <!-- WiFi -->
+                <div id="wifi-input" class="input-section" style="display: none;">
+                    <div class="input-group">
+                        <label for="wifi-ssid">SSID (Nombre de Red)</label>
+                        <input type="text" id="wifi-ssid" placeholder="Mi Red WiFi">
+                        <label for="wifi-password">Contraseña</label>
+                        <input type="text" id="wifi-password" placeholder="contraseña123">
+                        <label for="wifi-security">Seguridad</label>
+                        <select id="wifi-security">
+                            <option value="WPA">WPA/WPA2</option>
+                            <option value="WEP">WEP</option>
+                            <option value="nopass">Sin contraseña</option>
+                        </select>
+                        <label>
+                            <input type="checkbox" id="wifi-hidden">
+                            <span>Red oculta</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- vCard -->
+                <div id="vcard-input" class="input-section" style="display: none;">
+                    <div class="input-group">
+                        <label for="vcard-name">Nombre completo</label>
+                        <input type="text" id="vcard-name" placeholder="Juan Pérez">
+                        <label for="vcard-organization">Organización</label>
+                        <input type="text" id="vcard-organization" placeholder="Mi Empresa">
+                        <label for="vcard-phone">Teléfono</label>
+                        <input type="tel" id="vcard-phone" placeholder="+1234567890">
+                        <label for="vcard-email">Email</label>
+                        <input type="email" id="vcard-email" placeholder="email@ejemplo.com">
+                        <label for="vcard-website">Sitio Web</label>
+                        <input type="url" id="vcard-website" placeholder="https://ejemplo.com">
+                        <label for="vcard-address">Dirección</label>
+                        <input type="text" id="vcard-address" placeholder="Dirección completa">
+                    </div>
+                </div>
+
+                <!-- Personalización -->
+                <div class="section">
+                    <h2>🎨 Personalización</h2>
+                    <div class="input-group">
+                        <label for="size">Tamaño (píxeles)</label>
+                        <input type="range" id="size" min="200" max="1000" value="400">
+                        <span id="size-value">400px</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="foreground-color">Color de Código</label>
+                        <input type="color" id="foreground-color" value="#000000">
+                    </div>
+                    <div class="input-group">
+                        <label for="background-color">Color de Fondo</label>
+                        <input type="color" id="background-color" value="#FFFFFF">
+                    </div>
+                    <div class="input-group">
+                        <label for="error-correction">Nivel de Corrección de Errores</label>
+                        <select id="error-correction">
+                            <option value="L">L - Bajo (7%)</option>
+                            <option value="M" selected>M - Medio (15%)</option>
+                            <option value="Q">Q - Alto (25%)</option>
+                            <option value="H">H - Muy Alto (30%)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="dot-type">Tipo de Punto</label>
+                        <select id="dot-type">
+                            <option value="square" selected>Cuadrado</option>
+                            <option value="round">Redondeado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Logo/Imagen -->
+                <div class="section">
+                    <h2>🖼️ Logo/Imagen</h2>
+                    <div class="input-group">
+                        <label for="logo-file">Subir Logo (máx. 1MB)</label>
+                        <input type="file" id="logo-file" accept="image/*">
+                        <button type="button" id="remove-logo" style="display: none;">❌ Quitar Logo</button>
+                    </div>
+                    <div class="input-group">
+                        <label for="logo-size">Tamaño del Logo (%)</label>
+                        <input type="range" id="logo-size" min="10" max="30" value="20">
+                        <span id="logo-size-value">20%</span>
+                    </div>
+                </div>
+
+                <!-- Botón de Generar -->
+                <button id="generate-btn" class="generate-btn">🚀 Generar QR</button>
+            </div>
+
+            <!-- Panel de Resultado -->
+            <div class="result-panel">
+                <h2>📱 Vista Previa</h2>
+                <div id="qr-output">
+                    <div class="placeholder">
+                        <p>👆 Completa los campos y haz clic en "Generar QR"</p>
+                    </div>
+                </div>
+                <div id="download-buttons" style="display: none;">
+                    <button id="download-png" class="download-btn">💾 Descargar PNG</button>
+                    <button id="download-svg" class="download-btn">💾 Descargar SVG</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p><a href="https://qr.carlinitools.com" target="_blank">Creado por Carlini Tools</a></p>
+        </footer>
+    </div>
+
+    <script src="qrcode.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+

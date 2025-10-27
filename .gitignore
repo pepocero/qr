@@ -1,0 +1,25 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Node (if needed in the future)
+node_modules/
+package-lock.json
+
+# Build outputs (if needed in the future)
+dist/
+build/
+
+# Dependencies downloaded locally
+qrcode.min.js
+

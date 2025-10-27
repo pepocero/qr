@@ -1,0 +1,29 @@
+# Cloudflare Pages Configuration (optional)
+
+# This file is optional and will be automatically detected by Cloudflare Pages
+# Cloudflare Pages will serve static files from the root directory automatically
+
+# Build command (not needed for static sites)
+# build_command: ""
+
+# Output directory
+# output_directory: "./"
+
+# Custom headers (optional)
+headers:
+  - path: /*
+    headers:
+      - key: X-Frame-Options
+        value: DENY
+      - key: X-Content-Type-Options
+        value: nosniff
+      - key: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - key: Permissions-Policy
+        value: camera=(), microphone=(), geolocation=()
+
+# Redirects (optional)
+# redirects:
+#   - from: /old
+#     to: /new
+
