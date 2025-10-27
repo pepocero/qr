@@ -34,6 +34,24 @@ header {
     margin-bottom: 30px;
 }
 
+.logo-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.header-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    object-fit: contain;
+    background: white;
+    padding: 5px;
+}
+
 header h1 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -285,6 +303,15 @@ footer {
 @media (max-width: 768px) {
     header h1 {
         font-size: 2rem;
+    }
+    
+    .header-logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .logo-header {
+        gap: 15px;
     }
 
     .options-panel, .result-panel {
