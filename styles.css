@@ -48,8 +48,7 @@ header {
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     object-fit: contain;
-    background: white;
-    padding: 5px;
+    background: transparent;
 }
 
 header h1 {
